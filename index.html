@@ -1,0 +1,1917 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Jawad Akram — Creative Designer & Stock Artist</title>
+    <meta
+      name="description"
+      content="Jawad Akram — Creative Graphic Designer, Vector Artist & Stock Contributor on Adobe Stock, Shutterstock & Behance."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=DM+Mono:wght@300;400;500&family=Bebas+Neue&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      /* ===== THEME VARIABLES ===== */
+      [data-theme="light"] {
+        --bg: #faf8f3;
+        --bg2: #f0ece2;
+        --surface: #ede9df;
+        --border: rgba(0, 0, 0, 0.1);
+        --gold: #b8860b;
+        --gold-light: #d4a017;
+        --white: #1a1a1a;
+        --grey: #666660;
+        --accent: #b8860b;
+        --loader-bg: #faf8f3;
+        --nav-blur: rgba(250, 248, 243, 0.92);
+        --shadow: rgba(0, 0, 0, 0.08);
+        --stats-bg: #f0ece2;
+        --platform-bg: #faf8f3;
+        --platform-hover: rgba(184, 134, 11, 0.06);
+        --marquee-color: rgba(184, 134, 11, 0.35);
+        --marquee-dot: rgba(184, 134, 11, 0.18);
+        --skill-bar-bg: rgba(0, 0, 0, 0.08);
+        --asset-bg: #ede9df;
+        --hero-bg-text: rgba(184, 134, 11, 0.05);
+        --noise-opacity: 0.25;
+        --toggle-bg: #e0dcd2;
+        --toggle-knob: #b8860b;
+      }
+
+      [data-theme="dark"] {
+        --bg: #080808;
+        --bg2: #0d0d0d;
+        --surface: #111111;
+        --border: rgba(255, 255, 255, 0.07);
+        --gold: #c9a84c;
+        --gold-light: #e8cc7a;
+        --white: #f5f0e8;
+        --grey: #888880;
+        --accent: #c9a84c;
+        --loader-bg: #080808;
+        --nav-blur: rgba(8, 8, 8, 0.92);
+        --shadow: rgba(0, 0, 0, 0.4);
+        --stats-bg: #111111;
+        --platform-bg: #080808;
+        --platform-hover: rgba(201, 168, 76, 0.04);
+        --marquee-color: rgba(201, 168, 76, 0.4);
+        --marquee-dot: rgba(201, 168, 76, 0.2);
+        --skill-bar-bg: rgba(255, 255, 255, 0.08);
+        --asset-bg: #111111;
+        --hero-bg-text: rgba(201, 168, 76, 0.04);
+        --noise-opacity: 0.4;
+        --toggle-bg: #222;
+        --toggle-knob: #c9a84c;
+      }
+
+      *,
+      *::before,
+      *::after {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        background: var(--bg);
+        color: var(--white);
+        font-family: "DM Mono", monospace;
+        overflow-x: hidden;
+        cursor: none;
+        transition:
+          background 0.4s ease,
+          color 0.4s ease;
+      }
+
+      /* CURSOR */
+      .cursor {
+        width: 12px;
+        height: 12px;
+        background: var(--gold);
+        border-radius: 50%;
+        position: fixed;
+        top: 0;
+        left: 0;
+        pointer-events: none;
+        z-index: 9999;
+        transition: transform 0.15s ease;
+        mix-blend-mode: multiply;
+      }
+      [data-theme="dark"] .cursor {
+        mix-blend-mode: difference;
+      }
+      .cursor-ring {
+        width: 40px;
+        height: 40px;
+        border: 1px solid var(--gold);
+        border-radius: 50%;
+        position: fixed;
+        top: 0;
+        left: 0;
+        pointer-events: none;
+        z-index: 9998;
+        transition:
+          transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+          opacity 0.3s;
+        opacity: 0.5;
+      }
+
+      /* NOISE */
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+        pointer-events: none;
+        z-index: 1000;
+        opacity: var(--noise-opacity);
+        transition: opacity 0.4s;
+      }
+
+      /* ===== THEME TOGGLE ===== */
+      .theme-toggle {
+        width: 52px;
+        height: 28px;
+        background: var(--toggle-bg);
+        border-radius: 14px;
+        border: 1px solid var(--border);
+        position: relative;
+        cursor: none;
+        transition: background 0.3s;
+        flex-shrink: 0;
+        display: flex;
+        align-items: center;
+        padding: 3px;
+      }
+      .theme-toggle::after {
+        content: "";
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        background: var(--toggle-knob);
+        position: absolute;
+        left: 4px;
+        transition: transform 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      }
+      [data-theme="dark"] .theme-toggle::after {
+        transform: translateX(24px);
+      }
+      .toggle-icon {
+        position: absolute;
+        font-size: 10px;
+        line-height: 1;
+        transition: opacity 0.3s;
+        pointer-events: none;
+      }
+      .icon-sun {
+        right: 6px;
+        opacity: 1;
+      }
+      .icon-moon {
+        left: 6px;
+        opacity: 0;
+      }
+      [data-theme="dark"] .icon-sun {
+        opacity: 0;
+      }
+      [data-theme="dark"] .icon-moon {
+        opacity: 1;
+      }
+
+      /* NAV */
+      nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 900;
+        padding: 2rem 4rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 1px solid transparent;
+        transition: all 0.4s ease;
+      }
+      nav.scrolled {
+        background: var(--nav-blur);
+        backdrop-filter: blur(20px);
+        border-bottom-color: var(--border);
+      }
+      .nav-left {
+        display: flex;
+        align-items: center;
+        gap: 3rem;
+      }
+      .nav-logo {
+        font-family: "Bebas Neue", sans-serif;
+        font-size: 1.7rem;
+        letter-spacing: 0.15em;
+        color: var(--white);
+        text-decoration: none;
+        font-weight: 400;
+      }
+      .nav-logo span {
+        color: var(--gold);
+      }
+      .nav-links {
+        display: flex;
+        gap: 3rem;
+        list-style: none;
+      }
+      .nav-links a {
+        font-family: "DM Mono", monospace;
+        font-size: 0.72rem;
+        letter-spacing: 0.25em;
+        color: var(--grey);
+        text-decoration: none;
+        text-transform: uppercase;
+        transition: color 0.3s;
+        font-weight: 500;
+      }
+      .nav-links a:hover {
+        color: var(--gold);
+      }
+      .nav-right {
+        display: flex;
+        align-items: center;
+        gap: 1.5rem;
+      }
+
+      /* HERO */
+      #hero {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        padding: 8rem 4rem 4rem;
+        position: relative;
+        overflow: hidden;
+      }
+      .hero-bg-text {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-family: "Bebas Neue", sans-serif;
+        font-size: clamp(8rem, 20vw, 22rem);
+        color: var(--hero-bg-text);
+        white-space: nowrap;
+        pointer-events: none;
+        letter-spacing: 0.05em;
+        animation: bgFloat 8s ease-in-out infinite;
+        transition: color 0.4s;
+      }
+      @keyframes bgFloat {
+        0%,
+        100% {
+          transform: translate(-50%, -50%) scale(1);
+        }
+        50% {
+          transform: translate(-50%, -52%) scale(1.02);
+        }
+      }
+      .hero-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 4rem;
+        align-items: center;
+        max-width: 1400px;
+        margin: 0 auto;
+        width: 100%;
+        position: relative;
+        z-index: 2;
+      }
+      .hero-eyebrow {
+        font-family: "DM Mono", monospace;
+        font-size: 0.68rem;
+        letter-spacing: 0.35em;
+        color: var(--gold);
+        text-transform: uppercase;
+        margin-bottom: 1.5rem;
+        opacity: 0;
+        animation: fadeUp 0.8s 0.2s forwards;
+        font-weight: 500;
+      }
+      .hero-name {
+        font-family: "Cormorant Garamond", serif;
+        font-size: clamp(4rem, 8vw, 8rem);
+        font-weight: 600;
+        line-height: 0.92;
+        letter-spacing: -0.02em;
+        margin-bottom: 0.5rem;
+        opacity: 0;
+        animation: fadeUp 0.8s 0.4s forwards;
+      }
+      .hero-name em {
+        font-style: italic;
+        color: var(--gold-light);
+        font-weight: 600;
+      }
+      .hero-name-accent {
+        display: block;
+        width: 80px;
+        height: 3px;
+        background: linear-gradient(90deg, var(--gold), transparent);
+        margin-top: 1rem;
+        margin-bottom: 1.5rem;
+        opacity: 0;
+        animation: fadeUp 0.8s 0.55s forwards;
+      }
+      .hero-title {
+        font-family: "Bebas Neue", sans-serif;
+        font-size: clamp(1.3rem, 2.8vw, 2.2rem);
+        letter-spacing: 0.28em;
+        color: var(--grey);
+        margin-bottom: 2.5rem;
+        opacity: 0;
+        animation: fadeUp 0.8s 0.6s forwards;
+      }
+      .hero-desc {
+        font-family: "DM Mono", monospace;
+        font-size: 0.8rem;
+        line-height: 2;
+        color: var(--grey);
+        max-width: 480px;
+        margin-bottom: 3rem;
+        opacity: 0;
+        animation: fadeUp 0.8s 0.8s forwards;
+      }
+      .hero-cta {
+        display: flex;
+        gap: 1.5rem;
+        flex-wrap: wrap;
+        opacity: 0;
+        animation: fadeUp 0.8s 1s forwards;
+      }
+      .btn-primary {
+        font-family: "DM Mono", monospace;
+        font-size: 0.68rem;
+        letter-spacing: 0.25em;
+        font-weight: 500;
+        text-transform: uppercase;
+        color: var(--bg);
+        background: var(--gold);
+        padding: 1.1rem 2.8rem;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+      }
+      [data-theme="light"] .btn-primary {
+        color: #fff;
+      }
+      .btn-primary::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: var(--gold-light);
+        transform: translateX(-100%);
+        transition: transform 0.4s ease;
+      }
+      .btn-primary:hover::after {
+        transform: translateX(0);
+      }
+      .btn-primary span {
+        position: relative;
+        z-index: 1;
+      }
+      .btn-ghost {
+        font-family: "DM Mono", monospace;
+        font-size: 0.68rem;
+        letter-spacing: 0.25em;
+        font-weight: 500;
+        text-transform: uppercase;
+        color: var(--white);
+        border: 1.5px solid var(--border);
+        padding: 1.1rem 2.8rem;
+        text-decoration: none;
+        transition: all 0.3s ease;
+      }
+      .btn-ghost:hover {
+        border-color: var(--gold);
+        color: var(--gold);
+      }
+
+      /* PROFILE */
+      .hero-right {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        opacity: 0;
+        animation: fadeIn 1.2s 0.5s forwards;
+      }
+      .profile-ring-wrap {
+        position: relative;
+        width: clamp(280px, 35vw, 480px);
+        aspect-ratio: 1;
+      }
+      .profile-ring-outer {
+        position: absolute;
+        inset: -20px;
+        border-radius: 50%;
+        border: 1px solid rgba(201, 168, 76, 0.2);
+        animation: spin 20s linear infinite;
+      }
+      .profile-ring-outer::before {
+        content: "";
+        position: absolute;
+        width: 8px;
+        height: 8px;
+        background: var(--gold);
+        border-radius: 50%;
+        top: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+        box-shadow: 0 0 20px var(--gold);
+      }
+      .profile-ring-inner {
+        position: absolute;
+        inset: -8px;
+        border-radius: 50%;
+        border: 1px solid rgba(201, 168, 76, 0.1);
+        animation: spin 12s linear infinite reverse;
+      }
+      .profile-img-wrap {
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        overflow: hidden;
+        position: relative;
+        background: linear-gradient(135deg, var(--surface), var(--bg2));
+      }
+      .profile-img-wrap::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(
+          circle at 30% 30%,
+          rgba(201, 168, 76, 0.15),
+          transparent 60%
+        );
+        border-radius: 50%;
+      }
+      .profile-img-wrap img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        filter: grayscale(20%) contrast(1.05);
+        transition: filter 0.5s;
+      }
+      .profile-img-wrap:hover img {
+        filter: grayscale(0%) contrast(1.1);
+      }
+      .profile-badge {
+        position: absolute;
+        bottom: -10px;
+        right: -20px;
+        background: var(--surface);
+        border: 1px solid var(--border);
+        padding: 0.8rem 1.2rem;
+        backdrop-filter: blur(10px);
+        box-shadow: 0 8px 32px var(--shadow);
+      }
+      .profile-badge .num {
+        font-family: "Bebas Neue", sans-serif;
+        font-size: 2.2rem;
+        color: var(--gold);
+        line-height: 1;
+        font-weight: 400;
+      }
+      .profile-badge .label {
+        font-family: "DM Mono", monospace;
+        font-size: 0.55rem;
+        letter-spacing: 0.2em;
+        color: var(--grey);
+        text-transform: uppercase;
+        font-weight: 500;
+      }
+      @keyframes spin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+      @keyframes fadeUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      /* STATS */
+      .stats-strip {
+        border-top: 1px solid var(--border);
+        border-bottom: 1px solid var(--border);
+        display: flex;
+        overflow: hidden;
+        background: var(--stats-bg);
+        transition: background 0.4s;
+      }
+      .stats-item {
+        flex: 1;
+        padding: 2.5rem 3rem;
+        border-right: 1px solid var(--border);
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+        transition: background 0.3s;
+      }
+      .stats-item:hover {
+        background: rgba(184, 134, 11, 0.04);
+      }
+      [data-theme="dark"] .stats-item:hover {
+        background: rgba(201, 168, 76, 0.04);
+      }
+      .stats-item:last-child {
+        border-right: none;
+      }
+      .stats-num {
+        font-family: "Bebas Neue", sans-serif;
+        font-size: 3.5rem;
+        color: var(--gold);
+        display: block;
+        line-height: 1;
+        font-weight: 400;
+      }
+      .stats-label {
+        font-family: "DM Mono", monospace;
+        font-size: 0.62rem;
+        letter-spacing: 0.25em;
+        color: var(--grey);
+        text-transform: uppercase;
+        margin-top: 0.5rem;
+        display: block;
+        font-weight: 500;
+      }
+
+      /* SECTION BASE */
+      section {
+        padding: 8rem 4rem;
+        max-width: 1400px;
+        margin: 0 auto;
+      }
+      .full-bleed {
+        max-width: none;
+        padding-left: 0;
+        padding-right: 0;
+      }
+      .section-eyebrow {
+        font-family: "DM Mono", monospace;
+        font-size: 0.62rem;
+        letter-spacing: 0.4em;
+        color: var(--gold);
+        text-transform: uppercase;
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        margin-bottom: 1.5rem;
+        font-weight: 500;
+      }
+      .section-eyebrow::after {
+        content: "";
+        height: 1px;
+        width: 60px;
+        background: var(--gold);
+        opacity: 0.4;
+      }
+      .section-title {
+        font-family: "Cormorant Garamond", serif;
+        font-size: clamp(2.8rem, 5vw, 5rem);
+        font-weight: 600;
+        line-height: 1.05;
+        margin-bottom: 1.5rem;
+      }
+      .section-title em {
+        font-style: italic;
+        color: var(--gold-light);
+        font-weight: 600;
+      }
+
+      /* ABOUT */
+      #about .about-grid {
+        display: grid;
+        grid-template-columns: 1fr 1.5fr;
+        gap: 6rem;
+        align-items: start;
+      }
+      .about-skills {
+        margin-top: 3rem;
+        display: flex;
+        flex-direction: column;
+        gap: 1.2rem;
+      }
+      .skill-name {
+        display: flex;
+        justify-content: space-between;
+        font-size: 0.67rem;
+        letter-spacing: 0.15em;
+        color: var(--grey);
+        text-transform: uppercase;
+        margin-bottom: 0.5rem;
+        font-weight: 500;
+      }
+      .skill-bar {
+        height: 2px;
+        background: var(--skill-bar-bg);
+        position: relative;
+        overflow: hidden;
+        border-radius: 1px;
+      }
+      .skill-fill {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        background: linear-gradient(90deg, var(--gold), var(--gold-light));
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      }
+      .skill-fill.animated {
+        transform: scaleX(1);
+      }
+      .about-text p {
+        font-size: 0.82rem;
+        line-height: 2;
+        color: var(--grey);
+        margin-bottom: 1.5rem;
+      }
+      .about-text p strong {
+        color: var(--white);
+        font-weight: 500;
+      }
+
+      /* PLATFORMS */
+      .platforms-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1px;
+        background: var(--border);
+        margin-top: 4rem;
+      }
+      .platform-card {
+        background: var(--platform-bg);
+        padding: 3.5rem;
+        text-decoration: none;
+        transition: background 0.3s;
+        position: relative;
+        overflow: hidden;
+      }
+      .platform-card::before {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 3px;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          var(--gold),
+          transparent
+        );
+        transform: scaleX(0);
+        transition: transform 0.5s ease;
+      }
+      .platform-card:hover {
+        background: var(--platform-hover);
+      }
+      .platform-card:hover::before {
+        transform: scaleX(1);
+      }
+
+      /* Platform icon area hidden but space kept for label */
+      .platform-icon {
+        font-family: "DM Mono", monospace;
+        font-size: 0.68rem;
+        letter-spacing: 0.3em;
+        color: var(--gold);
+        margin-bottom: 1.5rem;
+        font-weight: 500;
+        text-transform: uppercase;
+      }
+      .platform-name {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 3rem;
+        font-weight: 700;
+        color: var(--white);
+        margin-bottom: 0.8rem;
+        line-height: 1;
+        transition: color 0.3s;
+      }
+      .platform-card:hover .platform-name {
+        color: var(--gold-light);
+      }
+      .platform-desc {
+        font-size: 0.67rem;
+        line-height: 1.9;
+        color: var(--grey);
+        letter-spacing: 0.04em;
+        margin-top: 1rem;
+      }
+      .platform-arrow {
+        margin-top: 2rem;
+        font-family: "DM Mono", monospace;
+        font-size: 0.62rem;
+        letter-spacing: 0.2em;
+        color: var(--gold);
+        text-transform: uppercase;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        transition: gap 0.3s;
+        font-weight: 500;
+      }
+      .platform-card:hover .platform-arrow {
+        gap: 1rem;
+      }
+
+      /* WORKS */
+      #works {
+        max-width: none;
+        padding-left: 4rem;
+        padding-right: 4rem;
+      }
+      .works-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        margin-bottom: 3rem;
+      }
+      .works-filter {
+        display: flex;
+        gap: 1.5rem;
+      }
+      .filter-btn {
+        font-family: "DM Mono", monospace;
+        font-size: 0.62rem;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: var(--grey);
+        background: none;
+        border: none;
+        cursor: none;
+        transition: color 0.3s;
+        padding: 0.3rem 0;
+        border-bottom: 1px solid transparent;
+        font-weight: 500;
+      }
+      .filter-btn.active,
+      .filter-btn:hover {
+        color: var(--gold);
+        border-bottom-color: var(--gold);
+      }
+      .assets-masonry {
+        columns: 4;
+        column-gap: 1.5rem;
+      }
+      @media (max-width: 1200px) {
+        .assets-masonry {
+          columns: 3;
+        }
+      }
+      @media (max-width: 768px) {
+        .assets-masonry {
+          columns: 2;
+        }
+      }
+
+      .asset-item {
+        break-inside: avoid;
+        margin-bottom: 1.5rem;
+        position: relative;
+        overflow: hidden;
+        cursor: none;
+        background: var(--asset-bg);
+      }
+      .asset-item img {
+        width: 100%;
+        display: block;
+        transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      }
+      .asset-item:hover img {
+        transform: scale(1.05);
+      }
+      .asset-overlay {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          to top,
+          rgba(8, 8, 8, 0.95) 0%,
+          transparent 60%
+        );
+        opacity: 0;
+        transition: opacity 0.4s;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        padding: 1.5rem;
+      }
+      [data-theme="light"] .asset-overlay {
+        background: linear-gradient(
+          to top,
+          rgba(250, 248, 243, 0.97) 0%,
+          transparent 60%
+        );
+      }
+      .asset-item:hover .asset-overlay {
+        opacity: 1;
+      }
+      .asset-title {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 0.95rem;
+        font-weight: 600;
+        color: var(--white);
+        margin-bottom: 0.4rem;
+        line-height: 1.3;
+      }
+      .asset-platform {
+        font-family: "DM Mono", monospace;
+        font-size: 0.55rem;
+        letter-spacing: 0.2em;
+        color: var(--gold);
+        text-transform: uppercase;
+        font-weight: 500;
+      }
+      .asset-link {
+        position: absolute;
+        inset: 0;
+        z-index: 2;
+      }
+      .view-all-wrap {
+        text-align: center;
+        margin-top: 4rem;
+      }
+
+      /* CONTACT */
+      #contact {
+        max-width: 900px;
+        margin: 0 auto;
+        text-align: center;
+      }
+      .contact-intro {
+        font-family: "DM Mono", monospace;
+        font-size: 0.77rem;
+        line-height: 2;
+        color: var(--grey);
+        max-width: 500px;
+        margin: 0 auto 4rem;
+      }
+      .contact-email {
+        font-family: "Cormorant Garamond", serif;
+        font-size: clamp(1.5rem, 4vw, 3rem);
+        font-weight: 600;
+        font-style: italic;
+        color: var(--white);
+        text-decoration: none;
+        display: inline-block;
+        position: relative;
+        transition: color 0.3s;
+      }
+      .contact-email::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 2px;
+        background: var(--gold);
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform 0.4s;
+      }
+      .contact-email:hover {
+        color: var(--gold-light);
+      }
+      .contact-email:hover::after {
+        transform: scaleX(1);
+      }
+      .social-links {
+        display: flex;
+        justify-content: center;
+        gap: 3rem;
+        margin-top: 4rem;
+        flex-wrap: wrap;
+      }
+      .social-link {
+        font-family: "DM Mono", monospace;
+        font-size: 0.67rem;
+        letter-spacing: 0.25em;
+        text-transform: uppercase;
+        color: var(--grey);
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        gap: 0.8rem;
+        transition: color 0.3s;
+        font-weight: 500;
+      }
+      .social-link:hover {
+        color: var(--gold);
+      }
+      .social-link svg {
+        width: 16px;
+        height: 16px;
+        fill: currentColor;
+      }
+
+      /* FOOTER */
+      footer {
+        border-top: 1px solid var(--border);
+        padding: 3rem 4rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 0.62rem;
+        letter-spacing: 0.15em;
+        color: var(--grey);
+        font-family: "DM Mono", monospace;
+        background: var(--bg2);
+        transition: background 0.4s;
+        opacity: 0.7;
+      }
+
+      /* REVEAL */
+      .reveal {
+        opacity: 0;
+        transform: translateY(40px);
+        transition:
+          opacity 0.8s ease,
+          transform 0.8s ease;
+      }
+      .reveal.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* MARQUEE */
+      .marquee-strip {
+        overflow: hidden;
+        border-top: 1px solid var(--border);
+        border-bottom: 1px solid var(--border);
+        padding: 1.2rem 0;
+        background: var(--bg2);
+        transition: background 0.4s;
+      }
+      .marquee-track {
+        display: flex;
+        gap: 4rem;
+        animation: marquee 25s linear infinite;
+        white-space: nowrap;
+      }
+      .marquee-item {
+        font-family: "Bebas Neue", sans-serif;
+        font-size: 0.9rem;
+        letter-spacing: 0.3em;
+        color: var(--marquee-color);
+        flex-shrink: 0;
+        display: flex;
+        align-items: center;
+        gap: 2rem;
+      }
+      .marquee-item span {
+        color: var(--marquee-dot);
+        font-size: 0.6rem;
+      }
+      @keyframes marquee {
+        from {
+          transform: translateX(0);
+        }
+        to {
+          transform: translateX(-50%);
+        }
+      }
+
+      /* LOADER */
+      #loader {
+        position: fixed;
+        inset: 0;
+        background: var(--loader-bg);
+        z-index: 9999;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        gap: 1.5rem;
+        transition:
+          opacity 0.8s ease,
+          visibility 0.8s;
+      }
+      #loader.hidden {
+        opacity: 0;
+        visibility: hidden;
+      }
+      .loader-name {
+        font-family: "Bebas Neue", sans-serif;
+        font-size: 3rem;
+        letter-spacing: 0.3em;
+        color: var(--white);
+      }
+      .loader-name span {
+        color: var(--gold);
+      }
+      .loader-bar-wrap {
+        width: 200px;
+        height: 2px;
+        background: var(--border);
+        overflow: hidden;
+      }
+      .loader-bar {
+        height: 100%;
+        background: var(--gold);
+        animation: load 1.5s ease forwards;
+      }
+      @keyframes load {
+        from {
+          width: 0;
+        }
+        to {
+          width: 100%;
+        }
+      }
+      .loader-num {
+        font-family: "DM Mono", monospace;
+        font-size: 0.6rem;
+        letter-spacing: 0.3em;
+        color: var(--grey);
+      }
+
+      /* RESPONSIVE */
+      @media (max-width: 900px) {
+        nav {
+          padding: 1.5rem 2rem;
+        }
+        .nav-links {
+          display: none;
+        }
+        #hero {
+          padding: 6rem 2rem 3rem;
+        }
+        .hero-grid {
+          grid-template-columns: 1fr;
+          text-align: center;
+          gap: 3rem;
+        }
+        .hero-desc {
+          margin: 0 auto 3rem;
+        }
+        .hero-cta {
+          justify-content: center;
+        }
+        .hero-right {
+          order: -1;
+        }
+        .profile-ring-wrap {
+          width: 220px;
+        }
+        section {
+          padding: 5rem 2rem;
+        }
+        #about .about-grid {
+          grid-template-columns: 1fr;
+          gap: 3rem;
+        }
+        .platforms-grid {
+          grid-template-columns: 1fr;
+        }
+        .stats-strip {
+          flex-wrap: wrap;
+        }
+        .stats-item {
+          flex: 1 1 50%;
+        }
+        footer {
+          flex-direction: column;
+          gap: 1rem;
+          text-align: center;
+        }
+        #works {
+          padding-left: 2rem;
+          padding-right: 2rem;
+        }
+        .works-header {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 1.5rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- LOADER -->
+    <div id="loader">
+      <div class="loader-name">JAWAD <span>AKRAM</span></div>
+      <div class="loader-bar-wrap"><div class="loader-bar"></div></div>
+      <div class="loader-num" id="loader-num">0%</div>
+    </div>
+
+    <!-- CURSOR -->
+    <div class="cursor" id="cursor"></div>
+    <div class="cursor-ring" id="cursorRing"></div>
+
+    <!-- NAV -->
+    <nav id="navbar">
+      <div class="nav-left">
+        <a href="#" class="nav-logo">J<span>.</span>AKRAM</a>
+        <ul class="nav-links">
+          <li><a href="#about">About</a></li>
+          <li><a href="#platforms">Work</a></li>
+          <li><a href="#works">Portfolio</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="nav-right">
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+          <span class="toggle-icon icon-sun">☀️</span>
+          <span class="toggle-icon icon-moon">🌙</span>
+        </button>
+      </div>
+    </nav>
+
+    <!-- HERO -->
+    <section id="hero">
+      <div class="hero-bg-text" aria-hidden="true">DESIGN</div>
+      <div class="hero-grid">
+        <div class="hero-left">
+          <p class="hero-eyebrow">Creative Designer & Stock Artist</p>
+          <h1 class="hero-name">Jawad<br /><em>Akram</em></h1>
+          <div class="hero-name-accent"></div>
+          <p class="hero-title">Vector Art · Illustration · Stock</p>
+          <p class="hero-desc">
+            Crafting high-quality vector illustrations, seamless patterns, and
+            digital assets for global markets. Available on Adobe Stock,
+            Shutterstock & Behance.
+          </p>
+          <div class="hero-cta">
+            <a href="#works" class="btn-primary"><span>View Portfolio</span></a>
+            <a href="#contact" class="btn-ghost">Hire Me</a>
+          </div>
+        </div>
+
+        <div class="hero-right">
+          <div class="profile-ring-wrap">
+            <div class="profile-ring-outer"></div>
+            <div class="profile-ring-inner"></div>
+            <div class="profile-img-wrap">
+              <img
+                src="dp.jpg"
+                alt="Jawad Akram — Creative Designer"
+                onerror="
+                  this.style.display = 'none';
+                  this.parentElement.innerHTML +=
+                    '<div style=\'position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:Bebas Neue,sans-serif;font-size:5rem;color:var(--gold);opacity:0.5;\'>JA</div>';
+                "
+              />
+            </div>
+            <div class="profile-badge">
+              <div class="num">10K+</div>
+              <div class="label">Assets Published</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- STATS -->
+    <div class="stats-strip">
+      <div class="stats-item reveal">
+        <span class="stats-num" data-target="10000" data-suffix="K+">0</span>
+        <span class="stats-label">Assets Published</span>
+      </div>
+      <div class="stats-item reveal">
+        <span class="stats-num" data-target="3">0</span>
+        <span class="stats-label">Platforms</span>
+      </div>
+      <div class="stats-item reveal">
+        <span class="stats-num" data-target="8">0</span>
+        <span class="stats-label">Asset Categories</span>
+      </div>
+      <div class="stats-item reveal">
+        <span class="stats-num" data-target="4">0</span>
+        <span class="stats-label">Years Active</span>
+      </div>
+    </div>
+
+    <!-- MARQUEE -->
+    <div class="marquee-strip">
+      <div class="marquee-track">
+        <div class="marquee-item">Vector Illustration <span>✦</span></div>
+        <div class="marquee-item">Seamless Patterns <span>✦</span></div>
+        <div class="marquee-item">Logo Design <span>✦</span></div>
+        <div class="marquee-item">Digital Art <span>✦</span></div>
+        <div class="marquee-item">Adobe Stock <span>✦</span></div>
+        <div class="marquee-item">Shutterstock <span>✦</span></div>
+        <div class="marquee-item">Behance <span>✦</span></div>
+        <div class="marquee-item">Tattoo Design <span>✦</span></div>
+        <div class="marquee-item">Icon Collections <span>✦</span></div>
+        <div class="marquee-item">Vector Illustration <span>✦</span></div>
+        <div class="marquee-item">Seamless Patterns <span>✦</span></div>
+        <div class="marquee-item">Logo Design <span>✦</span></div>
+        <div class="marquee-item">Digital Art <span>✦</span></div>
+        <div class="marquee-item">Adobe Stock <span>✦</span></div>
+        <div class="marquee-item">Shutterstock <span>✦</span></div>
+        <div class="marquee-item">Behance <span>✦</span></div>
+        <div class="marquee-item">Tattoo Design <span>✦</span></div>
+        <div class="marquee-item">Icon Collections <span>✦</span></div>
+      </div>
+    </div>
+
+    <!-- ABOUT -->
+    <section id="about">
+      <div class="about-grid">
+        <div class="reveal">
+          <p class="section-eyebrow">About Me</p>
+          <h2 class="section-title">
+            The Art<br />of <em>Digital</em><br />Craft
+          </h2>
+          <div class="about-skills">
+            <div class="skill-row">
+              <div class="skill-name">
+                <span>Vector Illustration</span><span>95%</span>
+              </div>
+              <div class="skill-bar">
+                <div class="skill-fill" style="width: 95%"></div>
+              </div>
+            </div>
+            <div class="skill-row">
+              <div class="skill-name">
+                <span>Pattern Design</span><span>92%</span>
+              </div>
+              <div class="skill-bar">
+                <div class="skill-fill" style="width: 92%"></div>
+              </div>
+            </div>
+            <div class="skill-row">
+              <div class="skill-name">
+                <span>Logo & Branding</span><span>88%</span>
+              </div>
+              <div class="skill-bar">
+                <div class="skill-fill" style="width: 88%"></div>
+              </div>
+            </div>
+            <div class="skill-row">
+              <div class="skill-name">
+                <span>Digital Illustration</span><span>90%</span>
+              </div>
+              <div class="skill-bar">
+                <div class="skill-fill" style="width: 90%"></div>
+              </div>
+            </div>
+            <div class="skill-row">
+              <div class="skill-name">
+                <span>Stock Photography</span><span>80%</span>
+              </div>
+              <div class="skill-bar">
+                <div class="skill-fill" style="width: 80%"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="about-text reveal">
+          <p>
+            I'm <strong>Jawad Akram</strong>, a creative graphic designer and
+            digital artist specializing in vector illustration, seamless
+            patterns, and commercial stock art. My work is available to
+            designers and creatives worldwide through leading stock platforms.
+          </p>
+          <p>
+            With a deep passion for <strong>bold visual storytelling</strong>, I
+            create assets that range from vibrant seamless patterns and
+            hand-drawn illustrations to tribal tattoo designs, silhouette art,
+            and holiday graphics — all crafted with meticulous attention to
+            detail.
+          </p>
+          <p>
+            My portfolio spans <strong>Adobe Stock</strong>,
+            <strong>Shutterstock</strong>, and <strong>Behance</strong>, where I
+            continuously push the boundaries of commercial vector art, making
+            high-quality design accessible to creators globally.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- PLATFORMS -->
+    <section
+      id="platforms"
+      class="full-bleed"
+      style="
+        padding: 0;
+        border-top: 1px solid var(--border);
+        border-bottom: 1px solid var(--border);
+      "
+    >
+      <div style="padding: 5rem 4rem 3rem; max-width: 1400px; margin: 0 auto">
+        <p class="section-eyebrow reveal">Platforms</p>
+        <h2 class="section-title reveal">Find My Work <em>On</em></h2>
+      </div>
+      <div class="platforms-grid reveal">
+        <!-- Adobe Stock — NO ICON, BIG TEXT -->
+        <a
+          href="https://stock.adobe.com/contributor/211820173/Jawada07"
+          target="_blank"
+          rel="noopener"
+          class="platform-card"
+        >
+          <div class="platform-icon">Adobe Stock</div>
+          <div class="platform-name">Adobe<br />Stock</div>
+          <div class="platform-desc">
+            10K+ vector illustrations, seamless patterns, silhouettes & holiday
+            graphics available for commercial licensing.
+          </div>
+          <div class="platform-arrow">View Portfolio →</div>
+        </a>
+        <!-- Shutterstock — NO ICON, BIG TEXT -->
+        <a
+          href="https://www.shutterstock.com/g/Jawad_07"
+          target="_blank"
+          rel="noopener"
+          class="platform-card"
+        >
+          <div class="platform-icon">Shutterstock</div>
+          <div class="platform-name">Shutter<br />stock</div>
+          <div class="platform-desc">
+            High-quality stock assets including vectors, icons, illustrations
+            and more — available for instant download.
+          </div>
+          <div class="platform-arrow">View Portfolio →</div>
+        </a>
+        <!-- Behance — NO ICON, BIG TEXT -->
+        <a
+          href="https://www.behance.net/jawadahmad69"
+          target="_blank"
+          rel="noopener"
+          class="platform-card"
+        >
+          <div class="platform-icon">Behance</div>
+          <div class="platform-name">Be<br />hance</div>
+          <div class="platform-desc">
+            Creative showcase featuring featured projects, case studies and
+            process work. Hire me directly for custom commissions.
+          </div>
+          <div class="platform-arrow">View Projects →</div>
+        </a>
+      </div>
+    </section>
+
+    <!-- WORKS -->
+    <section id="works">
+      <div class="works-header">
+        <div>
+          <p class="section-eyebrow reveal">Selected Works</p>
+          <h2 class="section-title reveal">Featured <em>Assets</em></h2>
+        </div>
+        <div class="works-filter reveal">
+          <button class="filter-btn active" onclick="filterAssets('all', this)">
+            All
+          </button>
+          <button class="filter-btn" onclick="filterAssets('patterns', this)">
+            Patterns
+          </button>
+          <button class="filter-btn" onclick="filterAssets('vectors', this)">
+            Vectors
+          </button>
+          <button class="filter-btn" onclick="filterAssets('logos', this)">
+            Logos
+          </button>
+        </div>
+      </div>
+
+      <div class="assets-masonry reveal" id="assetGrid">
+        <div class="asset-item" data-cat="patterns">
+          <img
+            src="https://t4.ftcdn.net/jpg/11/44/21/59/240_F_1144215924_kM6k4bYSqHcHpCpJTJyWBj7gfGEH8GJz.jpg"
+            alt="Vibrant Seamless Patterns Bold Line Art"
+            loading="lazy"
+            onerror="
+              this.parentElement.style.background = 'var(--surface)';
+              this.style.display = 'none';
+              this.parentElement.innerHTML +=
+                '<div style=\'padding:3rem 2rem;\'><p style=\'font-family:Cormorant Garamond,serif;font-size:1rem;color:var(--grey);\'>Vibrant Seamless Patterns — Bold Line Art</p><p style=\'font-family:DM Mono,monospace;font-size:0.6rem;color:var(--gold);margin-top:0.5rem;\'>Adobe Stock</p></div>';
+            "
+          />
+          <div class="asset-overlay">
+            <div class="asset-title">
+              Vibrant Seamless Patterns — Bold Line Art
+            </div>
+            <div class="asset-platform">Adobe Stock</div>
+          </div>
+          <a
+            href="https://stock.adobe.com/images/vibrant-seamless-patterns-with-bold-line-art-on-colorful-backgrounds/1144215924"
+            target="_blank"
+            class="asset-link"
+          ></a>
+        </div>
+
+        <div class="asset-item" data-cat="vectors">
+          <img
+            src="https://t4.ftcdn.net/jpg/14/45/16/65/240_F_1445166504_IJBcPP8vbhDuC2Q3U6bq2WTQn0r2gDX6.jpg"
+            alt="Hand Drawn Vector Illustrations Animals"
+            loading="lazy"
+            onerror="
+              this.parentElement.style.background = 'var(--surface)';
+              this.style.display = 'none';
+              this.parentElement.innerHTML +=
+                '<div style=\'padding:3rem 2rem;\'><p style=\'font-family:Cormorant Garamond,serif;font-size:1rem;color:var(--grey);\'>Hand Drawn Vector Illustrations — Animals & Sea Creatures</p><p style=\'font-family:DM Mono,monospace;font-size:0.6rem;color:var(--gold);margin-top:0.5rem;\'>Adobe Stock</p></div>';
+            "
+          />
+          <div class="asset-overlay">
+            <div class="asset-title">
+              Hand Drawn Vector Illustrations — Animals & Sea Creatures
+            </div>
+            <div class="asset-platform">Adobe Stock</div>
+          </div>
+          <a
+            href="https://stock.adobe.com/images/hand-drawn-vector-illustrations-of-animals-sea-creatures-fruits-and-fast-food-in-bold-ink-style/1445166504"
+            target="_blank"
+            class="asset-link"
+          ></a>
+        </div>
+
+        <div class="asset-item" data-cat="logos">
+          <img
+            src="https://t4.ftcdn.net/jpg/07/16/65/09/240_F_716650922_fBMlmxYHtUvgxFBpWFr2L17gVDAf8z2r.jpg"
+            alt="Vintage Barber Shop Logos"
+            loading="lazy"
+            onerror="
+              this.parentElement.style.background = 'var(--surface)';
+              this.style.display = 'none';
+              this.parentElement.innerHTML +=
+                '<div style=\'padding:3rem 2rem;\'><p style=\'font-family:Cormorant Garamond,serif;font-size:1rem;color:var(--grey);\'>Vintage Barber Shop Logos — Stylish Vector Hairstyles</p><p style=\'font-family:DM Mono,monospace;font-size:0.6rem;color:var(--gold);margin-top:0.5rem;\'>Adobe Stock</p></div>';
+            "
+          />
+          <div class="asset-overlay">
+            <div class="asset-title">Vintage Barber Shop Logos</div>
+            <div class="asset-platform">Adobe Stock</div>
+          </div>
+          <a
+            href="https://stock.adobe.com/images/vintage-barber-shop-logos-stylish-vector-hairstyles-for-your-design/716650922"
+            target="_blank"
+            class="asset-link"
+          ></a>
+        </div>
+
+        <div class="asset-item" data-cat="vectors">
+          <img
+            src="https://t4.ftcdn.net/jpg/07/44/43/38/240_F_744433803_vBfEjzSZQQ2ERxqnMPnYDxUUmHtqcPOe.jpg"
+            alt="Muscular Bodybuilder Vector Silhouette"
+            loading="lazy"
+            onerror="
+              this.parentElement.style.background = 'var(--surface)';
+              this.style.display = 'none';
+              this.parentElement.innerHTML +=
+                '<div style=\'padding:4rem 2rem;\'><p style=\'font-family:Cormorant Garamond,serif;font-size:1rem;color:var(--grey);\'>Muscular Bodybuilder Vector Silhouette</p><p style=\'font-family:DM Mono,monospace;font-size:0.6rem;color:var(--gold);margin-top:0.5rem;\'>Adobe Stock</p></div>';
+            "
+          />
+          <div class="asset-overlay">
+            <div class="asset-title">
+              Muscular Bodybuilder Vector Silhouette
+            </div>
+            <div class="asset-platform">Adobe Stock</div>
+          </div>
+          <a
+            href="https://stock.adobe.com/images/muscular-bodybuilder-vector-silhouette-illustration-isolated-on-white-background/744433803"
+            target="_blank"
+            class="asset-link"
+          ></a>
+        </div>
+
+        <div class="asset-item" data-cat="patterns">
+          <img
+            src="https://t4.ftcdn.net/jpg/10/55/71/77/240_F_1055717706_G4Wg9MXV5ARlXXEPuvAJJHBd4piA0Hmb.jpg"
+            alt="Halloween Pumpkin Vector"
+            loading="lazy"
+            onerror="
+              this.parentElement.style.background = 'var(--surface)';
+              this.style.display = 'none';
+              this.parentElement.innerHTML +=
+                '<div style=\'padding:2.5rem 2rem;\'><p style=\'font-family:Cormorant Garamond,serif;font-size:1rem;color:var(--grey);\'>Halloween Pumpkin Vector Collection</p><p style=\'font-family:DM Mono,monospace;font-size:0.6rem;color:var(--gold);margin-top:0.5rem;\'>Adobe Stock</p></div>';
+            "
+          />
+          <div class="asset-overlay">
+            <div class="asset-title">Halloween Pumpkin Vector Collection</div>
+            <div class="asset-platform">Adobe Stock</div>
+          </div>
+          <a
+            href="https://stock.adobe.com/images/collection-of-halloween-pumpkin-vector-horror-on-white-background/1055717706"
+            target="_blank"
+            class="asset-link"
+          ></a>
+        </div>
+
+        <div class="asset-item" data-cat="vectors">
+          <img
+            src="https://t4.ftcdn.net/jpg/07/29/23/03/240_F_729230335_fHBPQMjq1OGYpSO7FdBXDkWCfAkPzILU.jpg"
+            alt="Chinese Dragon Tribal Tattoo"
+            loading="lazy"
+            onerror="
+              this.parentElement.style.background = 'var(--surface)';
+              this.style.display = 'none';
+              this.parentElement.innerHTML +=
+                '<div style=\'padding:3.5rem 2rem;\'><p style=\'font-family:Cormorant Garamond,serif;font-size:1rem;color:var(--grey);\'>Chinese Dragon Head Tribal Tattoo Design</p><p style=\'font-family:DM Mono,monospace;font-size:0.6rem;color:var(--gold);margin-top:0.5rem;\'>Adobe Stock</p></div>';
+            "
+          />
+          <div class="asset-overlay">
+            <div class="asset-title">Chinese Dragon Head Tribal Tattoo</div>
+            <div class="asset-platform">Adobe Stock</div>
+          </div>
+          <a
+            href="https://stock.adobe.com/images/chinese-new-year-dragon-head-tribal-tattoo-design-vector-silhouette-logo/729230335"
+            target="_blank"
+            class="asset-link"
+          ></a>
+        </div>
+
+        <div class="asset-item" data-cat="logos">
+          <img
+            src="https://t4.ftcdn.net/jpg/07/03/31/51/240_F_703315157_v7v3tBQ4jrgJuJfC2FrNEklPCz3jyKdq.jpg"
+            alt="Women Boutique Dress Icons"
+            loading="lazy"
+            onerror="
+              this.parentElement.style.background = 'var(--surface)';
+              this.style.display = 'none';
+              this.parentElement.innerHTML +=
+                '<div style=\'padding:3rem 2rem;\'><p style=\'font-family:Cormorant Garamond,serif;font-size:1rem;color:var(--grey);\'>Women\'s Fashionable Boutique Dress Icons</p><p style=\'font-family:DM Mono,monospace;font-size:0.6rem;color:var(--gold);margin-top:0.5rem;\'>Adobe Stock</p></div>';
+            "
+          />
+          <div class="asset-overlay">
+            <div class="asset-title">
+              Women's Boutique Dress Icon Collection
+            </div>
+            <div class="asset-platform">Adobe Stock</div>
+          </div>
+          <a
+            href="https://stock.adobe.com/images/collection-of-woman-s-fashionable-boutique-dress-icon-logo/703315157"
+            target="_blank"
+            class="asset-link"
+          ></a>
+        </div>
+
+        <div class="asset-item" data-cat="vectors">
+          <img
+            src="https://t4.ftcdn.net/jpg/13/44/51/86/240_F_1344518645_c6bYzPLlNAPqTtZEZBb4R6L2Mb3LGCDl.jpg"
+            alt="Bold Tribal Tattoo Designs"
+            loading="lazy"
+            onerror="
+              this.parentElement.style.background = 'var(--surface)';
+              this.style.display = 'none';
+              this.parentElement.innerHTML +=
+                '<div style=\'padding:4rem 2rem;\'><p style=\'font-family:Cormorant Garamond,serif;font-size:1rem;color:var(--grey);\'>Bold Tribal Tattoo — Black & White Vector Art</p><p style=\'font-family:DM Mono,monospace;font-size:0.6rem;color:var(--gold);margin-top:0.5rem;\'>Adobe Stock</p></div>';
+            "
+          />
+          <div class="asset-overlay">
+            <div class="asset-title">Bold Tribal Tattoo — B&W Vector Art</div>
+            <div class="asset-platform">Adobe Stock</div>
+          </div>
+          <a
+            href="https://stock.adobe.com/images/bold-tribal-tattoo-designs-striking-black-white-vector-art/1344518645"
+            target="_blank"
+            class="asset-link"
+          ></a>
+        </div>
+
+        <div class="asset-item" data-cat="vectors">
+          <img
+            src="https://t4.ftcdn.net/jpg/07/59/94/54/240_F_759945470_1tLVZ0H3tSf5OIH0W3oUbLj6R4K0bOEr.jpg"
+            alt="Ninja Silhouette Illustrations"
+            loading="lazy"
+            onerror="
+              this.parentElement.style.background = 'var(--surface)';
+              this.style.display = 'none';
+              this.parentElement.innerHTML +=
+                '<div style=\'padding:3rem 2rem;\'><p style=\'font-family:Cormorant Garamond,serif;font-size:1rem;color:var(--grey);\'>Ninja Silhouette Illustrations</p><p style=\'font-family:DM Mono,monospace;font-size:0.6rem;color:var(--gold);margin-top:0.5rem;\'>Adobe Stock</p></div>';
+            "
+          />
+          <div class="asset-overlay">
+            <div class="asset-title">Ninja Silhouette Illustrations</div>
+            <div class="asset-platform">Adobe Stock</div>
+          </div>
+          <a
+            href="https://stock.adobe.com/images/ninja-silhouette-illustrations-on-isolated-background/759945470"
+            target="_blank"
+            class="asset-link"
+          ></a>
+        </div>
+
+        <div class="asset-item" data-cat="patterns">
+          <img
+            src="https://t4.ftcdn.net/jpg/14/45/16/51/240_F_1445165127_tKMqH7V7YFRVk2Wp0VPpNhTaZKi8KrK3.jpg"
+            alt="Hand Drawn Bold Ink Illustrations"
+            loading="lazy"
+            onerror="
+              this.parentElement.style.background = 'var(--surface)';
+              this.style.display = 'none';
+              this.parentElement.innerHTML +=
+                '<div style=\'padding:3.5rem 2rem;\'><p style=\'font-family:Cormorant Garamond,serif;font-size:1rem;color:var(--grey);\'>Hand Drawn Bold Ink Style Illustrations</p><p style=\'font-family:DM Mono,monospace;font-size:0.6rem;color:var(--gold);margin-top:0.5rem;\'>Adobe Stock</p></div>';
+            "
+          />
+          <div class="asset-overlay">
+            <div class="asset-title">
+              Hand Drawn Bold Ink Style Illustrations
+            </div>
+            <div class="asset-platform">Adobe Stock</div>
+          </div>
+          <a
+            href="https://stock.adobe.com/images/hand-drawn-vector-illustrations-of-animals-sea-creatures-fruits-and-fast-food-in-bold-ink-style/1445165127"
+            target="_blank"
+            class="asset-link"
+          ></a>
+        </div>
+
+        <div class="asset-item" data-cat="logos">
+          <img
+            src="https://t4.ftcdn.net/jpg/07/16/65/92/240_F_716659289_abc.jpg"
+            alt="Logo Set Ninja Silhouettes"
+            loading="lazy"
+            onerror="
+              this.parentElement.style.background = 'var(--surface)';
+              this.style.display = 'none';
+              this.parentElement.innerHTML +=
+                '<div style=\'padding:3rem 2rem;\'><p style=\'font-family:Cormorant Garamond,serif;font-size:1rem;color:var(--grey);\'>Logo Set — Ninja Silhouette Collection</p><p style=\'font-family:DM Mono,monospace;font-size:0.6rem;color:var(--gold);margin-top:0.5rem;\'>Adobe Stock</p></div>';
+            "
+          />
+          <div class="asset-overlay">
+            <div class="asset-title">
+              Logo Set — Ninja Silhouette Collection
+            </div>
+            <div class="asset-platform">Adobe Stock</div>
+          </div>
+          <a
+            href="https://stock.adobe.com/images/logo-set-of-ninja-silhouette-illustrations-on-isolated-background/716659289"
+            target="_blank"
+            class="asset-link"
+          ></a>
+        </div>
+
+        <div class="asset-item" data-cat="vectors">
+          <img
+            src="https://t4.ftcdn.net/jpg/13/37/16/15/240_F_1337161559_abc.jpg"
+            alt="Flat Color Fresh Fruits Vegetables"
+            loading="lazy"
+            onerror="
+              this.parentElement.style.background = 'var(--surface)';
+              this.style.display = 'none';
+              this.parentElement.innerHTML +=
+                '<div style=\'padding:3rem 2rem;\'><p style=\'font-family:Cormorant Garamond,serif;font-size:1rem;color:var(--grey);\'>Flat Color Vector — Fresh Fruits & Vegetables</p><p style=\'font-family:DM Mono,monospace;font-size:0.6rem;color:var(--gold);margin-top:0.5rem;\'>Adobe Stock</p></div>';
+            "
+          />
+          <div class="asset-overlay">
+            <div class="asset-title">
+              Flat Color Vector — Fresh Fruits & Vegetables
+            </div>
+            <div class="asset-platform">Adobe Stock</div>
+          </div>
+          <a
+            href="https://stock.adobe.com/images/flat-color-vector-set-of-fresh-fruits-and-vegetables-on-white-background/1337161559"
+            target="_blank"
+            class="asset-link"
+          ></a>
+        </div>
+      </div>
+
+      <div class="view-all-wrap reveal">
+        <a
+          href="https://stock.adobe.com/contributor/211820173/Jawada07"
+          target="_blank"
+          class="btn-primary"
+        >
+          <span>View All 10K+ Adobe Stock Assets →</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+      <p class="section-eyebrow" style="justify-content: center">
+        Get In Touch
+      </p>
+      <h2 class="section-title reveal" style="text-align: center">
+        Let's Create<br /><em>Something Great</em>
+      </h2>
+      <p class="contact-intro reveal">
+        Available for custom illustration projects, logo design, pattern
+        creation and commercial stock art. Let's collaborate on your next big
+        idea.
+      </p>
+      <a href="mailto:Jawadahmad5233@gmail.com" class="contact-email reveal"
+        >Jawadahmad5233@gmail.com</a
+      >
+
+      <div class="social-links reveal">
+        <a
+          href="https://stock.adobe.com/contributor/211820173/Jawada07"
+          target="_blank"
+          class="social-link"
+        >
+          <svg viewBox="0 0 24 24">
+            <path
+              d="M13.966 22.624l-1.69-4.281H7.122l3.104-8.997 4.74 13.278zM.324 22.624l6.855-19.248H3.814L0 22.624h.324zM23.676 22.624L16.536 3.376h-3.365l3.826 10.624-1.864 5.2 4.205 3.424h4.338z"
+            />
+          </svg>
+          Adobe Stock
+        </a>
+        <a
+          href="https://www.shutterstock.com/g/Jawad_07"
+          target="_blank"
+          class="social-link"
+        >
+          <svg viewBox="0 0 24 24">
+            <path
+              d="M12 0C5.374 0 0 5.373 0 12c0 6.628 5.374 12 12 12 6.628 0 12-5.372 12-12C24 5.373 18.628 0 12 0zm3.369 16.012a4.967 4.967 0 0 1-3.369 1.306 4.968 4.968 0 0 1-4.936-4.362H5.6l2.321-2.321 2.321 2.321h-1.41a3.276 3.276 0 0 0 3.168 2.669 3.246 3.246 0 0 0 2.212-.866l1.157 1.253zm1.645-4.675l-2.322 2.322-2.322-2.322h1.41A3.277 3.277 0 0 0 10.612 8.67a3.249 3.249 0 0 0-2.211.865L7.245 8.281A4.968 4.968 0 0 1 10.612 6.98a4.968 4.968 0 0 1 4.936 4.362h1.466v-.005z"
+            />
+          </svg>
+          Shutterstock
+        </a>
+        <a
+          href="https://www.behance.net/jawadahmad69"
+          target="_blank"
+          class="social-link"
+        >
+          <svg viewBox="0 0 24 24">
+            <path
+              d="M6.938 4.503c.702 0 1.34.06 1.92.188.577.13 1.07.33 1.485.61.41.28.733.65.96 1.12.225.47.34 1.05.34 1.73 0 .74-.17 1.36-.507 1.86-.338.5-.837.9-1.502 1.22.906.26 1.576.72 2.022 1.37.448.66.665 1.45.665 2.36 0 .75-.13 1.39-.41 1.93-.28.55-.67 1-1.16 1.35-.48.348-1.05.6-1.69.767-.63.166-1.29.254-1.98.254H0V4.51h6.938v-.008zm-.34 5.798c.584 0 1.06-.14 1.422-.425.36-.28.54-.72.54-1.30 0-.31-.06-.57-.18-.77-.12-.2-.28-.37-.48-.5-.2-.13-.43-.22-.69-.27-.26-.05-.52-.08-.8-.08H3.24v3.32h3.36v.03zm.16 6.06c.3 0 .59-.03.86-.09.27-.06.51-.16.72-.3.21-.14.38-.34.5-.58.13-.24.19-.54.19-.9 0-.72-.2-1.23-.61-1.54-.41-.3-.95-.45-1.62-.45H3.24v3.87h3.52v-.01zm9.764-9.43c-.01-.66.15-1.27.48-1.84.33-.56.77-1.03 1.31-1.43.55-.4 1.17-.7 1.88-.9.71-.21 1.46-.31 2.26-.31.76 0 1.49.09 2.18.27.69.18 1.3.46 1.82.83.52.38.93.85 1.24 1.43.3.57.45 1.25.45 2.03H21.1c0-.77-.25-1.35-.76-1.75-.51-.4-1.13-.6-1.87-.6-.42 0-.79.05-1.11.14-.32.09-.59.22-.81.39-.22.17-.38.37-.49.6-.1.23-.16.48-.16.76 0 .54.22.97.67 1.29.44.31 1 .59 1.66.82.66.23 1.37.46 2.13.68.76.22 1.47.52 2.13.9.66.38 1.21.86 1.66 1.44.44.58.66 1.33.66 2.25 0 .79-.14 1.49-.44 2.1-.29.6-.72 1.1-1.26 1.51-.54.41-1.18.72-1.92.93-.74.21-1.56.31-2.46.31-.83 0-1.62-.1-2.37-.31-.76-.21-1.42-.53-1.98-.96-.56-.43-1-.97-1.33-1.62-.33-.65-.5-1.4-.5-2.26h2.85c0 .44.08.82.23 1.14.16.32.37.59.63.8.27.21.57.37.92.47.35.1.72.15 1.11.15.44 0 .83-.05 1.16-.16.33-.1.6-.25.81-.44.21-.19.37-.41.47-.66.1-.25.15-.52.15-.8 0-.5-.22-.91-.67-1.22-.44-.3-1-.58-1.65-.82-.66-.23-1.37-.47-2.14-.7-.76-.23-1.47-.53-2.13-.91-.66-.38-1.2-.87-1.64-1.47-.44-.6-.66-1.37-.66-2.32v.02zm8.72-5.39h-6.52v-1.8h6.52v1.8z"
+            />
+          </svg>
+          Behance
+        </a>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+      <span>© 2025 Jawad Akram. All rights reserved.</span>
+      <span>Creative Designer · Stock Artist · Gujranwala, Pakistan</span>
+    </footer>
+
+    <script>
+      // ===== THEME TOGGLE (default: light) =====
+      const html = document.documentElement;
+      const toggle = document.getElementById("themeToggle");
+
+      // Already set to light in HTML attribute
+      toggle.addEventListener("click", () => {
+        const isDark = html.getAttribute("data-theme") === "dark";
+        html.setAttribute("data-theme", isDark ? "light" : "dark");
+      });
+
+      // CURSOR
+      const cursor = document.getElementById("cursor");
+      const ring = document.getElementById("cursorRing");
+      let mx = 0,
+        my = 0,
+        rx = 0,
+        ry = 0;
+      document.addEventListener("mousemove", (e) => {
+        mx = e.clientX;
+        my = e.clientY;
+        cursor.style.transform = `translate(${mx - 6}px,${my - 6}px)`;
+      });
+      function animateRing() {
+        rx += (mx - rx) * 0.12;
+        ry += (my - ry) * 0.12;
+        ring.style.transform = `translate(${rx - 20}px,${ry - 20}px)`;
+        requestAnimationFrame(animateRing);
+      }
+      animateRing();
+      document.querySelectorAll("a,button").forEach((el) => {
+        el.addEventListener("mouseenter", () => {
+          ring.style.opacity = "1";
+        });
+        el.addEventListener("mouseleave", () => {
+          ring.style.opacity = "0.5";
+        });
+      });
+
+      // LOADER
+      let pct = 0;
+      const numEl = document.getElementById("loader-num");
+      const loaderInterval = setInterval(() => {
+        pct = Math.min(pct + Math.random() * 12, 100);
+        numEl.textContent = Math.floor(pct) + "%";
+        if (pct >= 100) {
+          clearInterval(loaderInterval);
+          setTimeout(() => {
+            document.getElementById("loader").classList.add("hidden");
+          }, 300);
+        }
+      }, 80);
+
+      // NAV SCROLL
+      window.addEventListener("scroll", () => {
+        document
+          .getElementById("navbar")
+          .classList.toggle("scrolled", window.scrollY > 60);
+      });
+
+      // SCROLL REVEAL
+      const revealObs = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((e, i) => {
+            if (e.isIntersecting) {
+              setTimeout(() => e.target.classList.add("visible"), i * 80);
+              revealObs.unobserve(e.target);
+            }
+          });
+        },
+        { threshold: 0.1 },
+      );
+      document
+        .querySelectorAll(".reveal")
+        .forEach((el) => revealObs.observe(el));
+
+      // SKILL BARS
+      const skillObs = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((e) => {
+            if (e.isIntersecting) {
+              e.target
+                .querySelectorAll(".skill-fill")
+                .forEach((bar) => bar.classList.add("animated"));
+              skillObs.unobserve(e.target);
+            }
+          });
+        },
+        { threshold: 0.3 },
+      );
+      document
+        .querySelectorAll(".about-skills")
+        .forEach((el) => skillObs.observe(el));
+
+      // COUNTER — 10K+ special handling
+      function animateCounter(el, target) {
+        const isLarge = target >= 1000;
+        let current = 0;
+        const step = target / 60;
+        const interval = setInterval(() => {
+          current += step;
+          if (current >= target) {
+            current = target;
+            clearInterval(interval);
+          }
+          if (isLarge) {
+            el.textContent = Math.floor(current / 1000) + "K+";
+          } else {
+            el.textContent = Math.floor(current) + (target >= 100 ? "+" : "");
+          }
+        }, 25);
+      }
+      const counterObs = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((e) => {
+            if (e.isIntersecting) {
+              const target = parseInt(e.target.dataset.target);
+              animateCounter(e.target, target);
+              counterObs.unobserve(e.target);
+            }
+          });
+        },
+        { threshold: 0.5 },
+      );
+      document
+        .querySelectorAll(".stats-num[data-target]")
+        .forEach((el) => counterObs.observe(el));
+
+      // FILTER
+      function filterAssets(cat, btn) {
+        document
+          .querySelectorAll(".filter-btn")
+          .forEach((b) => b.classList.remove("active"));
+        btn.classList.add("active");
+        document.querySelectorAll(".asset-item").forEach((item) => {
+          item.style.display =
+            cat === "all" || item.dataset.cat === cat ? "block" : "none";
+        });
+      }
+
+      // SMOOTH SCROLL
+      document.querySelectorAll('a[href^="#"]').forEach((a) => {
+        a.addEventListener("click", (e) => {
+          const target = document.querySelector(a.getAttribute("href"));
+          if (target) {
+            e.preventDefault();
+            target.scrollIntoView({ behavior: "smooth" });
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
